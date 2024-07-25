@@ -92,10 +92,18 @@ def calc_group_discount(num_items, costs):
     # num_items is the full num_items dict
     total_in_group = sum(num_items[x] for x in ("S", "T", "X", "Y", "Z"))
     num_discounted = int(total_in_group / 3)
+    remaining_items = total_in_group % (num_discounted * 3)
+
+    # try and use up the remaining as Xs
+    if remaining_items < num_items["X"]:
+        ...
+    elif remaining_items < sum(num_items[x] for x in ("S", "T", "X", "Y")
+
 
     group_discount = 0
 
 
     return group_discount
+
 
 
