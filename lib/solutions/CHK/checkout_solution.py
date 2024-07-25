@@ -27,33 +27,24 @@ def checkout(skus):
     }
 
     freebies = {
-        "E": [(2, "B")],
-        "N": [(3, "M")],
-        "R": [(3, "Q")],
+        "E": (2, "B"),
+        "N": (3, "M"),
+        "R": (3, "Q"),
     }
+
+    # count items
     num_items = {item: 0 for item in costs}
     for item in skus:
         if not item in num_items:
             return -1
         num_items[item] += 1
 
-    # apply free Bs
-    free_bs = int(num_items["E"] / 2)
-    num_items["B"] = max(num_items["B"] - free_bs, 0)
+    # apply freebies
+    for item, free_info in freebies:
+        num_req, free_item = free_info
+        free_count = int(num_items[item] / num_req)
+        num_items[free_item] = max(num_items[free_item] - free_count, 0)
 
-    price_as = calc_as_price(num_items["A"], costs["A"])
-
-    # apply Bs discount
-    two_bs = int(num_items["B"] / 2)
-    two_bs_discount = 15
-
-    # apply Fs discount (treat buy 2 get one free as a 10 discount for every 3)
-    three_fs = int(num_items["F"] / 3)
-    three_fs_discount = 10
-
-    total_discounts = (two_bs * two_bs_discount) + (three_fs * three_fs_discount)
-
-    price = sum(num_items[item] * costs[item] for item in num_items if item != "A") - total_discounts + price_as
 
     return price
 
@@ -67,6 +58,7 @@ def calc_as_price(num_as, cost_as):
         price_as -= 20
 
     return price_as
+
 
 
 
