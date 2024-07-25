@@ -18,7 +18,18 @@ def checkout(skus):
         "A": [(5, 50), (3, 20)],
         "B": [(2, 15)],
         "F": [(3, 10)],
-        "H": [(10, 20), (5, 10)]
+        "H": [(10, 20), (5, 5)],
+        "K": [(2, 10)],
+        "P": [(5, 50)],
+        "Q": [(3, 10)],
+        "U": [(4, 40)],
+        "V": [(3, 20), (2, 10)]
+    }
+
+    freebies = {
+        "E": [(2, "B")],
+        "N": [(3, "M")],
+        "R": [(3, "Q")],
     }
     num_items = {item: 0 for item in costs}
     for item in skus:
@@ -56,6 +67,7 @@ def calc_as_price(num_as, cost_as):
         price_as -= 20
 
     return price_as
+
 
 
 
