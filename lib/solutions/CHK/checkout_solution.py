@@ -11,6 +11,15 @@ def checkout(skus):
         "E": 40,
         "F": 10,
     }
+
+    # multibuy discounts. List in the order that the discounts should be applied
+    # in the format (number, discount for that number)
+    discounts = {
+        "A": [(5, 50), (3, 20)],
+        "B": [(2, 15)],
+        "F": [(3, 10)],
+        "H": [(10, 20), (5, 10)]
+    }
     num_items = {item: 0 for item in costs}
     for item in skus:
         if not item in num_items:
@@ -47,5 +56,6 @@ def calc_as_price(num_as, cost_as):
         price_as -= 20
 
     return price_as
+
 
 
