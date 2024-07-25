@@ -66,24 +66,23 @@ def checkout(skus):
         num_items[free_item] = max(num_items[free_item] - free_count, 0)
 
     # apply discounts
+    discount_for_item = []
     for item, discount_info in discounts:
-        discount_for_item[item] = calc_discount_for_item(num_items[item], discount_info)
+        discounts.append(calc_discount_for_item(num_items[item], discount_info))
+
+    price = sum(costs[x] * num_items[x] for x in num_items) - sum(discount_for_item[x])
 
     return price
 
-def calc_as_price(num_as, cost_as):
-    # pricing structure means we can calculate the number of 5As first, and charge for those
-    # then if there's 0-2 left over, no extra discount, or if there's 3-4 left over, apply a 20 discount
-    five_as = int(num_as / 5)
-    leftover_as = num_as - 5 * five_as
-    price_as = five_as * 200 + leftover_as * cost_as
-    if leftover_as >= 3:
-        price_as -= 20
+def calc_discount_for_item(num_items, discount_info):
+    total_discount = 0
+    for discount in discount_info:
+        num_req, val = discount
+        # discount is a tuple, looks like (5, 50)
+        total_discount += int(num_items / num_req) * val
 
-    return price_as
-
+        # proceed with remaining items
+        num_items = num_items % num_req
 
 
-
-
-
+    return total_discount
