@@ -25,7 +25,9 @@ def checkout(skus):
     three_fs = int(num_items["F"] / 3)
     three_fs_discount = 10
 
-    price = sum(num_items[item] * costs[item] for item in num_items if item != "A") - (two_bs * two_bs_discount) + price_as
+    total_discounts = (two_bs * two_bs_discount) + (three_fs * three_fs_discount)
+
+    price = sum(num_items[item] * costs[item] for item in num_items if item != "A") - total_discounts + price_as
 
     return price
 
@@ -39,3 +41,4 @@ def calc_as_price(num_as, cost_as):
         price_as -= 20
 
     return price_as
+
