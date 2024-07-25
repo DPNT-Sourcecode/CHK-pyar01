@@ -94,18 +94,22 @@ def calc_group_discount(num_items, costs):
     num_discounted = int(total_in_group / 3)
     cost_for_grouped = num_discounted * 45
 
-    remaining_items = total_in_group % (num_discounted * 3)
+    remaining_items = total_in_group % 3
 
+    # first set some Xs as the extra
     extra_xs = min(remaining_items, num_items["X"])
     remaining_items -= extra_xs
 
+    # next set some S, T, Y
+    extra_stys = min(remaining_items, (num_items["S"] + num_items["T"] + num_items["Y"]))
+    remaining_items -= extra_stys
 
+    extra_zs = remaining_items
 
+    cost = cost_for_grouped + (extra_xs * 17) + (extra_stys * 20) + (extra_zs * 21)
 
-    group_discount = 0
+    return sum(num_items[x] * costs[x] for x in ("S", "T", "X", "Y", "Z")) - cost
 
-
-    return group_discount
 
 
 
