@@ -14,7 +14,7 @@ def checkout(skus):
         "H": 10,
         "I": 35,
         "J": 60,
-        "K": 80,
+        "K": 70,
         "L": 90,
         "M": 15,
         "N": 40,
@@ -22,14 +22,14 @@ def checkout(skus):
         "P": 50,
         "Q": 30,
         "R": 50,
-        "S": 30,
+        "S": 20,
         "T": 20,
         "U": 40,
         "V": 50,
         "W": 20,
-        "X": 90,
-        "Y": 10,
-        "Z": 50,
+        "X": 17,
+        "Y": 20,
+        "Z": 21,
     }
 
     # multibuy discounts. List in the order that the discounts should be applied
@@ -39,7 +39,7 @@ def checkout(skus):
         "B": [(2, 15)],
         "F": [(3, 10)],
         "H": [(10, 20), (5, 5)],
-        "K": [(2, 10)],
+        "K": [(2, 20)],
         "P": [(5, 50)],
         "Q": [(3, 10)],
         "U": [(4, 40)],
@@ -86,4 +86,5 @@ def calc_discount_for_item(num_items, discount_info):
 
 
     return total_discount
+
 
