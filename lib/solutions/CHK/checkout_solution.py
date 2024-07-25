@@ -3,9 +3,9 @@ from collections import defaultdict
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    items = ("A", "B", "C", "D")
+    items = ("A", "B", "C", "D", "E")
     num_items = {item: 0 for item in items}
-    costs = {"A": 50, "B": 30, "C": 20, "D": 15}
+    costs = {"A": 50, "B": 30, "C": 20, "D": 15, "E": 40}
     for item in skus:
         if not item in num_items:
             return -1
