@@ -11,11 +11,18 @@ def checkout(skus):
             return -1
         num_items[item] += 1
 
+    # apply free Bs
+    free_bs = int(num_items["E"] / 2)
+    num_items["B"] = max(num_items["B"] - free_bs, 0)
+
     # capture how many lots of 3 As there are
     three_as = int(num_items["A"] / 3)
     three_as_discount = 20
+
+    # apply Bs discount
     two_bs = int(num_items["B"] / 2)
     two_bs_discount = 15
     price = sum(num_items[item] * costs[item] for item in num_items) - three_as * three_as_discount - two_bs * two_bs_discount
 
     return price
+
