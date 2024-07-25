@@ -70,7 +70,7 @@ def checkout(skus):
     for item, discount_info in discounts.items():
         list_of_discounts.append(calc_discount_for_item(num_items[item], discount_info))
 
-    list_of_discounts.append(calc_group_discount(num_items))
+    list_of_discounts.append(calc_group_discount(num_items, costs))
 
     price = sum(costs[x] * num_items[x] for x in num_items) - sum(list_of_discounts)
 
@@ -88,11 +88,13 @@ def calc_discount_for_item(num_items, discount_info):
 
     return total_discount
 
-def calc_group_discount(num_items):
+def calc_group_discount(num_items, costs):
     # num_items is the full num_items dict
     total_in_group = sum(num_items[x] for x in ("S", "T", "X", "Y", "Z"))
+    num_discounted = int(total_in_group / 3)
 
     group_discount = 0
+
 
     return group_discount
 
