@@ -60,17 +60,17 @@ def checkout(skus):
         num_items[item] += 1
 
     # apply freebies first - this works out best for customer
-    for item, free_info in freebies:
+    for item, free_info in freebies.items():
         num_req, free_item = free_info
         free_count = int(num_items[item] / num_req)
         num_items[free_item] = max(num_items[free_item] - free_count, 0)
 
     # apply discounts
-    discount_for_item = []
-    for item, discount_info in discounts:
-        discounts.append(calc_discount_for_item(num_items[item], discount_info))
+    list_of_discounts = []
+    for item, discount_info in discounts.items():
+        list_of_discounts.append(calc_discount_for_item(num_items[item], discount_info))
 
-    price = sum(costs[x] * num_items[x] for x in num_items) - sum(discount_for_item[x])
+    price = sum(costs[x] * num_items[x] for x in num_items) - sum(list_of_discounts)
 
     return price
 
@@ -86,3 +86,4 @@ def calc_discount_for_item(num_items, discount_info):
 
 
     return total_discount
+
