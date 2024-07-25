@@ -3,9 +3,9 @@ from collections import defaultdict
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    items = ("A", "B", "C", "D", "E")
+    items = ("A", "B", "C", "D", "E", "F")
     num_items = {item: 0 for item in items}
-    costs = {"A": 50, "B": 30, "C": 20, "D": 15, "E": 40}
+    costs = {"A": 50, "B": 30, "C": 20, "D": 15, "E": 40, "F": 10}
     for item in skus:
         if not item in num_items:
             return -1
@@ -20,6 +20,10 @@ def checkout(skus):
     # apply Bs discount
     two_bs = int(num_items["B"] / 2)
     two_bs_discount = 15
+
+    # apply Fs discount (treat buy 2 get one free as a 10 discount for every 3)
+    three_fs = int(num_items["F"] / 3)
+    three_fs_discount = 10
 
     price = sum(num_items[item] * costs[item] for item in num_items if item != "A") - (two_bs * two_bs_discount) + price_as
 

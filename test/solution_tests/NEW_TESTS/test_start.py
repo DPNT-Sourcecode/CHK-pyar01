@@ -17,3 +17,10 @@ class TestCheckout():
         assert checkout_solution.checkout("AAAAAAAAAA") == 400
         assert checkout_solution.checkout("EEB") == 80
         assert checkout_solution.checkout("EEBBB") == 125
+
+    def test_checkout_r3(self):
+        assert checkout_solution.checkout("FFF") == 20
+        assert checkout_solution.checkout("FF") == 20
+        assert checkout_solution.checkout("F") == 10
+        assert checkout_solution.checkout("FFFF") == 30
+
