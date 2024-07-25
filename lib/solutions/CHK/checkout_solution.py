@@ -35,5 +35,3 @@ def calc_as_price(num_as, cost_as):
         price_as -= 20
 
     return price_as
-
-
