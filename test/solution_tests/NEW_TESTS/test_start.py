@@ -35,5 +35,9 @@ class TestCheckout():
     def test_checkout_r5(self):
         assert checkout_solution.checkout("STX") == 45
         assert checkout_solution.checkout("STXX") == 62
-
-
+        assert checkout_solution.checkout("STXZX") == 79
+        assert checkout_solution.checkout("SSTXZX") == 90
+        assert checkout_solution.checkout("SSTXZXZ") == 107
+        assert checkout_solution.checkout("ZZZZ") == 66
+        assert checkout_solution.checkout("SSSZ") == 65
+        assert checkout_solution.checkout("STYY") == 65

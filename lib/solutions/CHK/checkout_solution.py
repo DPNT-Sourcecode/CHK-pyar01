@@ -109,8 +109,3 @@ def calc_group_discount(num_items, costs):
     cost = cost_for_grouped + (extra_xs * 17) + (extra_stys * 20) + (extra_zs * 21)
 
     return sum(num_items[x] * costs[x] for x in ("S", "T", "X", "Y", "Z")) - cost
-
-
-
-
-
